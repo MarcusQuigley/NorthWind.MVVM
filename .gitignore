@@ -6,3 +6,6 @@
 *.MDF
 *.ldf
 *.trx
+*.dat
+*.testsettings
+*.vsmdi

@@ -42,9 +42,12 @@
                          SelectedValuePath="CustomerID"
                          SelectedValue="{Binding Mode=OneWayToSource, Path=SelectedCustomerID}"
                          Width="250" Height="150"/>
-                <Button Content="Customer Detail"
-                        Command="{Binding Path=CustomerCommand}"
-                        Margin="10"></Button>
+                    <ContentControl Margin="0,3">
+                        <Hyperlink Command="{Binding Path=CustomerCommand}">
+                            <TextBlock Text="ShowDetails"/>
+                        </Hyperlink>
+                    </ContentControl>
+                                             
                 </StackPanel>
             </Expander>
 

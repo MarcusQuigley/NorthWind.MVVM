@@ -15,6 +15,7 @@ namespace Northwind.ViewModel
        {
            _dataProvider = dataProvider;
            Customer = _dataProvider.GetCustomer(customerID);
+           base.DisplayName = Customer.CompanyName;
        }
 
        public Customer Customer {get;set;}

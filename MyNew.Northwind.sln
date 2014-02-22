@@ -9,7 +9,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Data", "Northwind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Application", "Northwind.Application\Northwind.Application.csproj", "{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4D0DE352-1B28-4CB6-A62F-905D69256CF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.ViewModel.Tests", "Tests\Northwind.ViewModel.Tests\Northwind.ViewModel.Tests.csproj", "{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2C75640-7FDE-46D7-90EF-A85C2F0B40E1}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		MyNew.Northwind.vsmdi = MyNew.Northwind.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = MyNew.Northwind.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -59,8 +73,22 @@ Global
 		{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540} = {4D0DE352-1B28-4CB6-A62F-905D69256CF5}
+		{D2C75640-7FDE-46D7-90EF-A85C2F0B40E1} = {4D0DE352-1B28-4CB6-A62F-905D69256CF5}
 	EndGlobalSection
 EndGlobal

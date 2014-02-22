@@ -5,15 +5,15 @@ using System.Text;
 using System.Windows.Input;
 namespace Northwind.ViewModel
 {
-   public class CustomerCommand : ICommand
+   public class RelayCommand : ICommand
     {
        private Action<object> _execute;
        private Func<object, bool> _canExecute;
        
-       public CustomerCommand( Action<object> execute)
+       public RelayCommand( Action<object> execute)
            : this(execute, null) {}
 
-       public CustomerCommand(Action<object> execute, Func<object, bool> canExecute)
+       public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
         {
            this._execute = execute;
            this._canExecute = canExecute;

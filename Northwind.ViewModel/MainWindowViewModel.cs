@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,6 +8,7 @@ using Northwind.Data;
 using System.Data.Objects;
 using Northwind.Application;
 using System.Windows.Input;
+using System.Windows.Data;
 
 namespace Northwind.ViewModel
 {
@@ -14,7 +16,7 @@ namespace Northwind.ViewModel
     {
         private readonly IUIDataProvider _dataProvider;
         private IList<Customer> _customers;
-        private CustomerCommand _customerCommand;
+        private RelayCommand _customerCommand;
        
 
         public MainWindowViewModel(IUIDataProvider dataProvider)
@@ -42,26 +44,56 @@ namespace Northwind.ViewModel
         }
 
 
-        public CustomerCommand CustomerCommand
+        public RelayCommand CustomerCommand
         {
-            get { return _customerCommand ??
-                (_customerCommand = new CustomerCommand(
-                    (param) => SelectCustomer(),
-                   (param) => IsCustomerSelected()));
+            get
+            {
+                return _customerCommand ??
+                    (_customerCommand = new RelayCommand(
+                  p => ShowCustomerDetails(),
+                 p => IsCustomerSelected()));
             }
-            
+
         }
 
-        public void  SelectCustomer()
+        public void  ShowCustomerDetails()
         {
-            Tools.Add(new CustomerDetailsViewModel(_dataProvider, SelectedCustomerID));
+            if (string.IsNullOrEmpty(SelectedCustomerID))
+                throw new ArgumentNullException("SelectedCustomerID");
+
+            CustomerDetailsViewModel customerDetails = GetCustomerDetailsTool(SelectedCustomerID);
+
+            if (customerDetails == null)
+            {
+                customerDetails = new CustomerDetailsViewModel(this._dataProvider, SelectedCustomerID);
+                Tools.Add(customerDetails);
+            }
+
+            SetCurrentTool(customerDetails);
+        }
+
+        private CustomerDetailsViewModel GetCustomerDetailsTool(string customerID)
+        {
+            return Tools.OfType<CustomerDetailsViewModel>()
+                .FirstOrDefault(c => c.Customer.CustomerID == customerID);
+        }
+
+        private void SetCurrentTool(ToolViewModel currentTool)
+        {
+           ICollectionView source = CollectionViewSource.GetDefaultView(Tools);
+           if (source != null)
+           {
+               if (source.MoveCurrentTo(currentTool) == false)
+                   throw new InvalidOperationException("Could not find Customer Tool VM in coll");
+           }
         }
 
         public IList<Customer> Customers
         {
             get
             {
-                return _customers ?? (_customers=GetCustomers());
+                return _customers ?? 
+                    (_customers=GetCustomers());
             }
         }
 
