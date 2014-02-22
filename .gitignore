@@ -1,0 +1,8 @@
+# git ignore file
+[Bb]in/
+[Oo]bj/
+*.suo
+*.user
+*.MDF
+*.ldf
+*.trx
