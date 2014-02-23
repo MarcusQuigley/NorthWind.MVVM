@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWind.Service", "NorthW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Model", "Northwind.Model\Northwind.Model.csproj", "{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Application.Tests", "Northwind.Application.Tests\Northwind.Application.Tests.csproj", "{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = MyNew.Northwind.vsmdi
@@ -110,6 +112,16 @@ Global
 		{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,5 +129,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6D53C8DC-59AD-41DE-A5EC-1C9C66894540} = {4D0DE352-1B28-4CB6-A62F-905D69256CF5}
 		{D2C75640-7FDE-46D7-90EF-A85C2F0B40E1} = {4D0DE352-1B28-4CB6-A62F-905D69256CF5}
+		{01159F8A-A0CE-4661-A6D1-FDF3D82CF09C} = {4D0DE352-1B28-4CB6-A62F-905D69256CF5}
 	EndGlobalSection
 EndGlobal
