@@ -5,7 +5,8 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Northwind.Application;
 using Rhino.Mocks;
-using Northwind.Data;
+using Northwind.Application.CustomerService;
+ 
 
 namespace Northwind.ViewModel.Tests
 {
@@ -55,5 +56,19 @@ namespace Northwind.ViewModel.Tests
           //Assert Failure
           //Assert.IsNull(customers);
       }
+    [ExpectedException(typeof(ArgumentNullException))]
+    [TestMethod]
+    public void ShowCustomerDetails_SelectedCustomerIDIsNull_ThrowsInvalidOperationException()
+    {
+        //Arrange
+        IUIDataProvider dataMock = MockRepository.GenerateMock<IUIDataProvider>();
+
+        //Act
+        MainWindowViewModel target = new MainWindowViewModel(dataMock);
+        target.SelectedCustomerID = null;
+        target.ShowCustomerDetails();
+        
+
+    }
     }
 }

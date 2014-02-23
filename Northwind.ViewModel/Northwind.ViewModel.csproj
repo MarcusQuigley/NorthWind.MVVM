@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,9 +57,9 @@
       <Project>{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}</Project>
       <Name>Northwind.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
-      <Project>{D1D70F44-5EBB-4465-8896-2517BFF7E605}</Project>
-      <Name>Northwind.Data</Name>
+    <ProjectReference Include="..\NorthWind.Service\NorthWind.Service.csproj">
+      <Project>{EA3A5A30-34E8-4EF9-A867-D54AEA4C6856}</Project>
+      <Name>NorthWind.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

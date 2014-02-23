@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Northwind.Data;
+using Northwind.Application.CustomerService;
+ 
 
 namespace Northwind.Application
 {
    public class UIDataProvider : IUIDataProvider
     {
-       private IList<Data.Customer> _customers;
+       private IList<Customer> _customers;
+       private readonly CustomerServiceClient _customerServiceClient 
+           = new CustomerServiceClient();
 
-        public IList<Data.Customer> GetCustomers()
+        public IList<Customer> GetCustomers()
         {
             if (_customers == null)
-                _customers = new NORTHWNDEntities().Customers.ToList();
+                _customers = _customerServiceClient.GetCustomers();
 
             return _customers;
         }
@@ -22,12 +25,33 @@ namespace Northwind.Application
 
 
 
-        public Customer GetCustomer(string CustomerID)
+        public Customer GetCustomer(string customerID)
         {
-            if (_customers == null)
-                GetCustomers();
+            Customer customer = _customers.First(c => c.CustomerID == customerID);
 
-            return _customers.Single(c => c.CustomerID == CustomerID);
+            return customer.Update(_customerServiceClient.GetCustomer(customerID));
+
+            //return _customers.Single(c => c.CustomerID == CustomerID);
         }
+
+
     }
+
+   internal static class CustomerExtensions
+   {
+       public static Customer Update(this Customer customer, Customer existingCustomer)
+       {
+           customer.CustomerID = existingCustomer.CustomerID;
+           customer.CompanyName = existingCustomer.CompanyName;
+           customer.Address = existingCustomer.Address;
+           customer.City = existingCustomer.City;
+           customer.ContactName = existingCustomer.ContactName;
+           customer.Country = existingCustomer.Country;
+           customer.Phone = existingCustomer.Phone;
+           customer.PostalCode = existingCustomer.PostalCode;
+           customer.Region = existingCustomer.Region;
+
+           return customer;
+       }
+   }
 }

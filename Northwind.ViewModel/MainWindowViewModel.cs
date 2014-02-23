@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using Northwind.Data;
+
 using System.Data.Objects;
 using Northwind.Application;
 using System.Windows.Input;
 using System.Windows.Data;
+using Northwind.Application.CustomerService;
 
 namespace Northwind.ViewModel
 {
