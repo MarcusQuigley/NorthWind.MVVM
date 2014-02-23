@@ -9,7 +9,8 @@ using System.Data.Objects;
 using Northwind.Application;
 using System.Windows.Input;
 using System.Windows.Data;
-using Northwind.Application.CustomerService;
+using Northwind.Model;
+//using Northwind.Application.CustomerService;
 
 namespace Northwind.ViewModel
 {

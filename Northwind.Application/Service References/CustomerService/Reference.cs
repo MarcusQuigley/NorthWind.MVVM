@@ -35,6 +35,9 @@ namespace Northwind.Application.CustomerService {
         private string ContactNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactTitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -107,6 +110,19 @@ namespace Northwind.Application.CustomerService {
                 if ((object.ReferenceEquals(this.ContactNameField, value) != true)) {
                     this.ContactNameField = value;
                     this.RaisePropertyChanged("ContactName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactTitle {
+            get {
+                return this.ContactTitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactTitleField, value) != true)) {
+                    this.ContactTitleField = value;
+                    this.RaisePropertyChanged("ContactTitle");
                 }
             }
         }

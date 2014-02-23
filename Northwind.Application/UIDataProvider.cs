@@ -2,56 +2,59 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Northwind.Application.CustomerService;
+//using Northwind.Application.CustomerService;
  
 
 namespace Northwind.Application
 {
    public class UIDataProvider : IUIDataProvider
     {
-       private IList<Customer> _customers;
-       private readonly CustomerServiceClient _customerServiceClient 
-           = new CustomerServiceClient();
+       private IList<Model.Customer> _customers;
+       private readonly CustomerService.ICustomerService _customerServiceClient;
 
-        public IList<Customer> GetCustomers()
+
+
+       public UIDataProvider(CustomerService.ICustomerService customerService)
+       {
+           _customerServiceClient = customerService;
+       }
+
+       public IList<Model.Customer> GetCustomers()
         {
             if (_customers == null)
-                _customers = _customerServiceClient.GetCustomers();
+                _customers = _customerServiceClient.GetCustomers().Select(
+                    c=> CustomerTranslator.Instance.CreateModel(c)).ToList();
 
             return _customers;
+         
         }
 
-       
-
-
-
-        public Customer GetCustomer(string customerID)
+       public Model.Customer GetCustomer(string customerID)
         {
-            Customer customer = _customers.First(c => c.CustomerID == customerID);
 
-            return customer.Update(_customerServiceClient.GetCustomer(customerID));
-
+            return CustomerTranslator.Instance.UpdateModel(
+                _customers.First(c=>c.CustomerID == customerID),
+                  _customerServiceClient.GetCustomer(customerID));
             //return _customers.Single(c => c.CustomerID == CustomerID);
         }
 
-
     }
 
-   internal static class CustomerExtensions
-   {
-       public static Customer Update(this Customer customer, Customer existingCustomer)
-       {
-           customer.CustomerID = existingCustomer.CustomerID;
-           customer.CompanyName = existingCustomer.CompanyName;
-           customer.Address = existingCustomer.Address;
-           customer.City = existingCustomer.City;
-           customer.ContactName = existingCustomer.ContactName;
-           customer.Country = existingCustomer.Country;
-           customer.Phone = existingCustomer.Phone;
-           customer.PostalCode = existingCustomer.PostalCode;
-           customer.Region = existingCustomer.Region;
+   //internal static class CustomerExtensions
+   //{
+   //    public static Customer Update(this Customer customer, Customer existingCustomer)
+   //    {
+   //        customer.CustomerID = existingCustomer.CustomerID;
+   //        customer.CompanyName = existingCustomer.CompanyName;
+   //        customer.Address = existingCustomer.Address;
+   //        customer.City = existingCustomer.City;
+   //        customer.ContactName = existingCustomer.ContactName;
+   //        customer.Country = existingCustomer.Country;
+   //        customer.Phone = existingCustomer.Phone;
+   //        customer.PostalCode = existingCustomer.PostalCode;
+   //        customer.Region = existingCustomer.Region;
 
-           return customer;
-       }
-   }
+   //        return customer;
+   //    }
+   //}
 }

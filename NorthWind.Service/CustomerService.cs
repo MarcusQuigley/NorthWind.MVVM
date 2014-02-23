@@ -40,6 +40,7 @@ namespace NorthWind.Service
                 Address = c.Address,
                 City = c.City,
                 ContactName = c.ContactName,
+                ContactTitle = c.ContactTitle,
                 Country = c.Country,
                 Phone = c.Phone,
                 PostalCode = c.PostalCode,

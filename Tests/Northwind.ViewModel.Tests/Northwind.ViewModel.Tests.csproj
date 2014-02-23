@@ -59,9 +59,9 @@
       <Project>{89154AE1-5AEE-4938-8695-B14F1FA0D9E1}</Project>
       <Name>Northwind.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NorthWind.Service\NorthWind.Service.csproj">
-      <Project>{EA3A5A30-34E8-4EF9-A867-D54AEA4C6856}</Project>
-      <Name>NorthWind.Service</Name>
+    <ProjectReference Include="..\..\Northwind.Model\Northwind.Model.csproj">
+      <Project>{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}</Project>
+      <Name>Northwind.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Northwind.ViewModel\Northwind.ViewModel.csproj">
       <Project>{F0E89367-B8C1-4F67-A8FB-9A6D3E7BA06B}</Project>

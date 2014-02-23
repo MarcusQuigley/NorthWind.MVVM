@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Northwind.Application;
-
+using Northwind.Application.CustomerService;
 namespace Northwind.ViewModel
 {
-   public class ViewModelLocator
+    public class ViewModelLocator
     {
-       private static MainWindowViewModel _mainWindowViewModel;
+        private static MainWindowViewModel _mainWindowViewModel;
 
-       public static MainWindowViewModel MainWindowViewModelStatic
-       {
-           get {
-     
-               return _mainWindowViewModel ??
-                   ( _mainWindowViewModel = new MainWindowViewModel(new UIDataProvider()));
-           }
-       }
-
+        public static MainWindowViewModel MainWindowViewModelStatic
+        {
+            get
+            {
+                return _mainWindowViewModel ??
+                    (_mainWindowViewModel = new MainWindowViewModel(new UIDataProvider(
+                        new CustomerServiceClient())));
+            }
+        }
     }
 }

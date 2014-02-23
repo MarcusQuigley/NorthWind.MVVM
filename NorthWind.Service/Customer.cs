@@ -16,6 +16,8 @@ namespace NorthWind.Service
         [DataMember]
         public string ContactName { get; set; }
         [DataMember]
+        public string ContactTitle { get; set; }
+        [DataMember]
         public string Address { get; set; }
         [DataMember]
         public string City { get; set; }
