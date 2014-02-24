@@ -71,6 +71,7 @@
     <Compile Include="CustomerDetails.xaml.cs">
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListBoxBehaviors.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -106,6 +107,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Northwind.Model\Northwind.Model.csproj">
+      <Project>{114B68E8-0AE9-4993-BF0C-78B54D61FE2A}</Project>
+      <Name>Northwind.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Northwind.ViewModel\Northwind.ViewModel.csproj">
       <Project>{F0E89367-B8C1-4F67-A8FB-9A6D3E7BA06B}</Project>
       <Name>Northwind.ViewModel</Name>

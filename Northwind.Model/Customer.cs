@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Northwind.Model
 {
-    public class Customer : ModelBase
+    public class Customer : ModelBase, IDataErrorInfo
     {
         private string _customerID;
         private string _companyName;
@@ -138,5 +140,65 @@ namespace Northwind.Model
                 RaisePropertyChanged("Phone");
             }
         }
+
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string propertyName]
+        {
+            get { return this.GetValidationError(propertyName); }
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                foreach (string property in ValidatedProperties)
+                    if (GetValidationError(property) != null)
+                        return false;
+
+                return true;
+            }
+        }
+
+        static readonly string[] ValidatedProperties = 
+        { 
+            "ContactName", 
+         };
+
+        string GetValidationError(string propertyName)
+        {
+            if (Array.IndexOf(ValidatedProperties, propertyName) < 0)
+                return null;
+
+            string error = null;
+
+            switch (propertyName)
+            {
+                case "ContactName":
+                    error = this.ValidateCompanyName();
+                    break;
+
+
+
+                default:
+                    Debug.Fail("Unexpected property being validated on Customer: " + propertyName);
+                    break;
+            }
+
+            return error;
+        }
+
+        private string ValidateCompanyName()
+        {
+            if (string.IsNullOrEmpty(this.ContactName))
+                return "Contact Name can't be empty";
+
+           return null;
+        }
+
     }
+
 }

@@ -18,7 +18,8 @@ namespace Northwind.ViewModel
     {
         private readonly IUIDataProvider _dataProvider;
         private IList<Customer> _customers;
-        private RelayCommand _customerCommand;
+        private RelayCommand _showDetailsCommand;
+        private RelayCommand _closeDetailsCommand;
        
 
         public MainWindowViewModel(IUIDataProvider dataProvider)
@@ -46,12 +47,23 @@ namespace Northwind.ViewModel
         }
 
 
-        public RelayCommand CustomerCommand
+        public RelayCommand ShowDetailsCommand
         {
             get
             {
-                return _customerCommand ??
-                    (_customerCommand = new RelayCommand(
+                return _showDetailsCommand ??
+                    (_showDetailsCommand = new RelayCommand(
+                  p => ShowCustomerDetails(),
+                 p => IsCustomerSelected()));
+            }
+
+        }
+        public RelayCommand CloseDetailsCommand
+        {
+            get
+            {
+                return _closeDetailsCommand ??
+                    (_closeDetailsCommand = new RelayCommand(
                   p => ShowCustomerDetails(),
                  p => IsCustomerSelected()));
             }
@@ -89,6 +101,8 @@ namespace Northwind.ViewModel
                    throw new InvalidOperationException("Could not find Customer Tool VM in coll");
            }
         }
+
+        
 
         public IList<Customer> Customers
         {

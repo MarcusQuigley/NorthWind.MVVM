@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Northwind.Application;
 using Northwind.Model;
+using System.ComponentModel;
 //using Northwind.Application.CustomerService;
  
 
 namespace Northwind.ViewModel
 {
-   public class CustomerDetailsViewModel :ToolViewModel
+    public class CustomerDetailsViewModel : ToolViewModel, IDataErrorInfo
     {
        private readonly IUIDataProvider _dataProvider;
        private RelayCommand _updateCommand;
@@ -52,6 +53,20 @@ namespace Northwind.ViewModel
        public bool CanUpdateCustomer()
        { 
         return _isDirty;
+       }
+
+       public string Error
+       {
+           get { return (Customer as IDataErrorInfo).Error; }
+       }
+
+       public string this[string propertyName]
+       {
+           get {
+               string error = null;
+               error = (Customer as IDataErrorInfo)[propertyName];
+               return error;
+           }
        }
     }
 }
