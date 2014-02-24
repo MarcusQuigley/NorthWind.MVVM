@@ -33,11 +33,11 @@ namespace Northwind.ViewModel
 
         public string Name
         {
-            get { return "Northwind"; } 
+            get { return "Customers Details"; } 
         }
         public string ControlPanelName
-        { 
-            get { return "Control Panel"; } 
+        {
+            get { return "Customers"; } 
         }
 
         public bool IsCustomerSelected()

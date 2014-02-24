@@ -12,7 +12,8 @@ namespace Northwind.Model
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public void RaisePropertyChanged(string propertyName)
-        { 
+        {
+            VerifyProperty(propertyName);
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 

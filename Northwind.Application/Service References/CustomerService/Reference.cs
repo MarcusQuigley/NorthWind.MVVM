@@ -211,6 +211,9 @@ namespace Northwind.Application.CustomerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomer", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerResponse")]
         Northwind.Application.CustomerService.Customer GetCustomer(string customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/Update", ReplyAction="http://tempuri.org/ICustomerService/UpdateResponse")]
+        void Update(Northwind.Application.CustomerService.Customer customer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -246,6 +249,10 @@ namespace Northwind.Application.CustomerService {
         
         public Northwind.Application.CustomerService.Customer GetCustomer(string customerID) {
             return base.Channel.GetCustomer(customerID);
+        }
+        
+        public void Update(Northwind.Application.CustomerService.Customer customer) {
+            base.Channel.Update(customer);
         }
     }
 }

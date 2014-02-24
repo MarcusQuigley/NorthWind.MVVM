@@ -38,6 +38,13 @@ namespace Northwind.Application
             //return _customers.Single(c => c.CustomerID == CustomerID);
         }
 
+
+
+       public void Update(Model.Customer customer)
+       {
+           _customerServiceClient.Update(
+               CustomerTranslator.Instance.CreateDto(customer));
+       }
     }
 
    //internal static class CustomerExtensions

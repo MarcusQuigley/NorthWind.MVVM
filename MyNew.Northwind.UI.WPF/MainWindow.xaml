@@ -2,14 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ViewModel="clr-namespace:Northwind.ViewModel;assembly=Northwind.ViewModel"
-        Title="MainWindow" Height="350" Width="625"
+        Title="MainWindow" Height="500" Width="705"
         DataContext="{Binding Source={x:Static ViewModel:ViewModelLocator.MainWindowViewModelStatic}}">
     <Window.Resources>
-        <ResourceDictionary>
+       
+        <ResourceDictionary x:Key="resource">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+       
     </Window.Resources>
     <DockPanel LastChildFill="True" >
         <Border DockPanel.Dock="Top" Background="{StaticResource ResourceKey=mainBlueBrush}"
@@ -42,12 +44,32 @@
                          SelectedValuePath="CustomerID"
                          SelectedValue="{Binding Mode=OneWayToSource, Path=SelectedCustomerID}"
                          Width="250" Height="150"/>
-                    <ContentControl Margin="0,3">
-                        <Hyperlink Command="{Binding Path=CustomerCommand}">
-                            <TextBlock Text="ShowDetails"/>
-                        </Hyperlink>
-                    </ContentControl>
-                                             
+                     <Button Height="65" Content="Show Details" 
+                            Command="{Binding Path=CustomerCommand}"
+                             HorizontalAlignment="Left">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                     <Ellipse x:Name="btnEllipse"
+                                             Height="{TemplateBinding Height}"
+                                             Width="{TemplateBinding Height}"
+                                             Fill="{TemplateBinding Background}"
+                                             Stroke="Black"
+                                             StrokeThickness="1"/>
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                     <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="btnEllipse" Property="Fill" Value="DimGray" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="btnEllipse" Property="Fill" Value="DarkGray"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </StackPanel>
             </Expander>
 

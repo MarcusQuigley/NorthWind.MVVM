@@ -61,12 +61,42 @@ namespace Northwind.Application
 
         public CustomerService.Customer CreateDto(Model.Customer model)
         {
-            throw new NotImplementedException();
+            return new CustomerService.Customer
+            {
+                CustomerID = model.CustomerID,
+                CompanyName = model.CompanyName,
+                Address = model.Address,
+                City = model.City,
+                ContactName = model.ContactName,
+                ContactTitle = model.ContactTitle,
+                Country = model.Country,
+                Phone = model.Phone,
+                Region = model.Region,
+                PostalCode = model.PostCode
+            };
         }
 
         public CustomerService.Customer UpdateDto(CustomerService.Customer dto, Model.Customer model)
         {
-            throw new NotImplementedException();
+            if (model == null) throw new ArgumentNullException("model");
+            if (dto == null) throw new ArgumentNullException("dto");
+
+             if (dto.CustomerID != model.CustomerID)
+                dto.CustomerID = model.CustomerID;
+
+            if (dto.CompanyName != model.CompanyName)
+                dto.CompanyName = model.CompanyName;
+
+            dto.Address = model.Address;
+            dto.City = model.City;
+            dto.ContactName = model.ContactName;
+            dto.ContactTitle = model.ContactTitle;
+            dto.Country = model.Country;
+            dto.Phone = model.Phone;
+            dto.PostalCode = model.PostCode;
+            dto.Region = model.Region;
+
+            return dto;
         }
     }
 }

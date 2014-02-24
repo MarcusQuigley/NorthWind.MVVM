@@ -48,5 +48,23 @@ namespace NorthWind.Service
             };
               
         }
+
+
+        public void Update(Service.Customer customer)
+        {
+            Northwind.Data.Customer c = nwindEntity.Customers.Single(
+               cust => cust.CustomerID == customer.CustomerID);
+ 
+            c.CompanyName = customer.CompanyName;
+            c.Address = customer.Address;
+            c.City = customer.City;
+            c.ContactName = customer.ContactName;
+            c.ContactTitle = customer.ContactTitle;
+            c.Country = customer.Country;
+            c.Phone = customer.Phone;
+            c.PostalCode = customer.PostalCode;
+            c.Region = customer.Region;
+            nwindEntity.SaveChanges();
+        }
     }
 }

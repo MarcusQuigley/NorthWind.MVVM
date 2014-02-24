@@ -9,7 +9,8 @@ namespace Northwind.Application
 {
     public interface IUIDataProvider
     {
-        IList<Customer> GetCustomers();
-        Customer GetCustomer(string customerID);
+        IList<Model.Customer> GetCustomers();
+        Model.Customer GetCustomer(string customerID);
+        void Update(Model.Customer customer);
     }
 }
