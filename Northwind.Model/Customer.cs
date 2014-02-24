@@ -180,9 +180,6 @@ namespace Northwind.Model
                 case "ContactName":
                     error = this.ValidateCompanyName();
                     break;
-
-
-
                 default:
                     Debug.Fail("Unexpected property being validated on Customer: " + propertyName);
                     break;

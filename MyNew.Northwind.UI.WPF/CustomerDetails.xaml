@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Skins/MainSkin.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <ViewModel:ZipValueConverter x:Key="zipSqrtConverter"/>
+   
         </ResourceDictionary>
      
     </UserControl.Resources>
@@ -59,7 +60,7 @@
                 <Label Grid.Column="0" Grid.Row="1" 
                        Content="Contact Name:" HorizontalContentAlignment="Right"/>
                 <TextBox Grid.Column="2" Grid.Row="1" 
-                         Margin="4" Text="{Binding Path=Customer.ContactName, ValidatesOnDataErrors=True}"/>
+                         Margin="4" Text="{Binding Path=Customer.ContactName, ValidatesOnDataErrors=True}"  />
                 <Label Grid.Column="0" Grid.Row="2" 
                        Content="Phone Number:" HorizontalContentAlignment="Right"/>
                 <TextBox Grid.Column="2" Grid.Row="2" 

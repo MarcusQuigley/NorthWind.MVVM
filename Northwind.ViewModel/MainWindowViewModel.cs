@@ -88,6 +88,10 @@ namespace Northwind.ViewModel
 
         private CustomerDetailsViewModel GetCustomerDetailsTool(string customerID)
         {
+            var x = Tools.OfType<CustomerDetailsViewModel>()
+                .FirstOrDefault(c => c.Customer.CustomerID == customerID);
+         
+
             return Tools.OfType<CustomerDetailsViewModel>()
                 .FirstOrDefault(c => c.Customer.CustomerID == customerID);
         }
@@ -102,7 +106,6 @@ namespace Northwind.ViewModel
            }
         }
 
-        
 
         public IList<Customer> Customers
         {

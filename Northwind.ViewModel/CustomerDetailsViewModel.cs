@@ -10,7 +10,7 @@ using System.ComponentModel;
 
 namespace Northwind.ViewModel
 {
-    public class CustomerDetailsViewModel : ToolViewModel, IDataErrorInfo
+    public class CustomerDetailsViewModel : ToolViewModel 
     {
        private readonly IUIDataProvider _dataProvider;
        private RelayCommand _updateCommand;
@@ -55,18 +55,6 @@ namespace Northwind.ViewModel
         return _isDirty;
        }
 
-       public string Error
-       {
-           get { return (Customer as IDataErrorInfo).Error; }
-       }
-
-       public string this[string propertyName]
-       {
-           get {
-               string error = null;
-               error = (Customer as IDataErrorInfo)[propertyName];
-               return error;
-           }
-       }
+    
     }
 }
