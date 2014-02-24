@@ -46,7 +46,8 @@
                          Width="250" Height="150"/>
                      <Button Height="65" Content="Show Details" 
                             Command="{Binding Path=CustomerCommand}"
-                             HorizontalAlignment="Left">
+                             HorizontalAlignment="Left"
+                             Background="Gray">
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
                                 <Grid>
@@ -64,7 +65,7 @@
                                         <Setter TargetName="btnEllipse" Property="Fill" Value="DimGray" />
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="True">
-                                        <Setter TargetName="btnEllipse" Property="Fill" Value="DarkGray"/>
+                                        <Setter TargetName="btnEllipse" Property="Fill" Value="DarkSlateGray"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
